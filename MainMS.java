@@ -1,12 +1,12 @@
-import javax.swing.SwingUtilities;
 import java.util.Random;
-import java.awt.image.BufferedImage;
-import javax.swing.JPanel;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 import java.awt.Color;
 
 
 public class MainMS {
-    static WindowMS appFrame = new WindowMS();
     
     
     final static int XBOUND = 775;
@@ -21,6 +21,19 @@ public class MainMS {
 
         System.out.print("\033[H\033[2J");
 
+
+        JFrame appFrame = new JFrame("Direct draw demo");
+
+        PanelMS panel = new PanelMS(XBOUND, YBOUND);
+
+        appFrame.add(panel);
+        appFrame.pack();
+        appFrame.setVisible(true);
+        appFrame.setResizable(false);
+        appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        panel.drawRect(Color.RED, 0, 0, XBOUND/2, YBOUND/2);
 
 
         
@@ -42,7 +55,7 @@ public class MainMS {
           }
     }
 
-    public static void refresh(WindowMS w){
+    public static void update(PanelMS w){
         SwingUtilities.updateComponentTreeUI(w);
     }
 
