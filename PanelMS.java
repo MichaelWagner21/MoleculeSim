@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PanelMS extends JPanel {
@@ -57,14 +56,6 @@ public class PanelMS extends JPanel {
     public void drawOval(Color c, int x1, int y1, int width, int height) {
         // Implement oval drawing
         repaint();
-    }
-
-
-
-    public static void main(String[] args) {
-        int width = 640;
-        int height = 480;
-        
     }
 
 
