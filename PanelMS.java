@@ -9,9 +9,14 @@ public class PanelMS extends JPanel {
 
     private BufferedImage canvas;
 
-    public PanelMS(int width, int height) {
-        canvas = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        fillCanvas(Color.BLUE);
+    private int width;
+    private int height;
+
+    public PanelMS(int w, int h) {
+        canvas = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        width = w;
+        height = h;
+        fillCanvas(Color.BLACK);
         
     }
 
@@ -38,7 +43,6 @@ public class PanelMS extends JPanel {
 
 
     public void drawLine(Color c, int x1, int y1, int x2, int y2) {
-        // Implement line drawing
         repaint();
     }
 
