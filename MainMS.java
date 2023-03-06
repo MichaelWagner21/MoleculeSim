@@ -22,7 +22,7 @@ public class MainMS {
         System.out.print("\033[H\033[2J");
 
 
-        JFrame appFrame = new JFrame("Direct draw demo");
+        JFrame appFrame = new JFrame("Molecule Simulator");
 
         PanelMS panel = new PanelMS(XBOUND, YBOUND);
 
@@ -33,7 +33,8 @@ public class MainMS {
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        panel.drawRect(Color.RED, 0, 0, XBOUND/2, YBOUND/2);
+        //panel.drawRect(Color.RED, 0, 0, XBOUND/2, YBOUND/2);
+        panel.drawLine(Color.RED, 100,100,300,300);
 
 
         
