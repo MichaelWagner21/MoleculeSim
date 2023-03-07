@@ -11,6 +11,8 @@ public class MainMS {
     
     final static int XBOUND = 775;
     final static int YBOUND = 750;
+
+    final static int YCANVASBOUND = YBOUND-375;
     
     
     final static double TIME = 10;
@@ -34,7 +36,7 @@ public class MainMS {
 
 
         //panel.drawRect(Color.RED, 0, 0, XBOUND/2, YBOUND/2);
-        panel.drawLine(Color.RED, 100,100,300,300);
+        panel.drawCircle(Color.RED, 0,100,30);
 
 
         

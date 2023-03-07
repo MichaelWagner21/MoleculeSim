@@ -78,24 +78,35 @@ public class PanelMS extends JPanel {
 
     public void drawCircle(Color c, int x1, int y1In, int radius) {
         int color = c.getRGB();
-        int y1=height-y1In;
+        int y1=MainMS.YCANVASBOUND-y1In;
 
-        for (int radIterator = 0; radIterator<=radius; radIterator++){
-            if (radIterator !=0){
-                double angleIterator = Math.PI/radIterator;
-                for (double theta = 0; theta<=Math.PI; theta+=angleIterator){
-                    int tempY = (int)Math.round(Math.sin(theta)*radIterator);
-                    int tempX = (int)Math.round(Math.cos(theta)*radIterator);
-                    canvas.setRGB(tempX,tempY,color);
+        for (int row = y1-radius; row<= y1+radius; row++){
+            for (int col = x1-radius; col<=x1+radius;col++){
+                if (twoDimDistance(x1,y1,col,row)<=radius){
+                    canvas.setRGB(x1+col,y1+row,color);
                 }
             }
-            else {
-                canvas.setRGB(0,0,color);
-            }
-            
         }
 
+        
+
         repaint();
+    }
+
+
+    public static double twoDimDistance(double x1, double y1, double x2, double y2){
+        double verDis = y2-y1;
+        double horDis = x2-x1;
+        double diagDis = Math.sqrt(verDis*verDis+horDis*horDis);
+        return diagDis;
+    }
+
+
+    public void setPixel(int x, int yIn, Color c){
+        int y = MainMS.YCANVASBOUND-yIn;
+        if ((x>0&y>0)&(x<MainMS.XBOUND&y<MainMS.YCANVASBOUND)){
+            canvas.setRGB(x,y,c.getRGB());
+        }
     }
 
 
