@@ -42,48 +42,43 @@ public class PanelMS extends JPanel {
     }
 
 
-    public void drawLine(Color c, int x1, int y1In, int x2, int y2In) {
-        int color = c.getRGB();
-        int y2=height-y2In;
-        int y1=height-y1In;
+    public void drawLine(Color c, int x1, int y1, int x2, int y2) {
 
-        double m = (y2-y1)/(x2-x1);
+        int minX = Math.min(x1,x2);
+        int maxX = Math.max(x1,x2);
 
-        if (x1<=x2){
-            for (int x = x1; x<=x2; x++){
-                int y = (int)Math.round(m*(x-x1)+y1);
-                canvas.setRGB(x, y, color);
-            }
-        }
-        else{
-            for (int x = x2; x<=x1; x++){
-                int y = (int)Math.round(m*(x-x2)+y2);
-                canvas.setRGB(x, y, color);
-            }
-        }
+        int minY = Math.min(y1,y2);
+        int maxY = Math.max(y1,y2);
+
+        double m = ((double)(y2-y1)/(double)(x2-x1));
+
+        System.out.print(m);
+
+        setPixel(x1,y1,c);
+
+        
+        
+    
 
         repaint();
     }
 
-    public void drawRect(Color c, int x1, int y1In, int width, int height) {
-        int color = c.getRGB();
-        int y1=height-y1In;
+    public void drawRect(Color c, int x1, int y1, int width, int height) {
+   
         for (int x = x1; x < x1 + width; x++) {
             for (int y = y1; y < y1 + height; y++) {
-                canvas.setRGB(x, y, color);
+                setPixel(x, y, c);
             }
         }
         repaint();
     }
 
-    public void drawCircle(Color c, int x1, int y1In, int radius) {
-        int color = c.getRGB();
-        int y1=MainMS.YCANVASBOUND-y1In;
+    public void drawCircle(Color c, int x1, int y1, int radius) {
 
         for (int row = y1-radius; row<= y1+radius; row++){
             for (int col = x1-radius; col<=x1+radius;col++){
                 if (twoDimDistance(x1,y1,col,row)<=radius){
-                    canvas.setRGB(x1+col,y1+row,color);
+                    setPixel(col,row,c);
                 }
             }
         }
@@ -103,8 +98,8 @@ public class PanelMS extends JPanel {
 
 
     public void setPixel(int x, int yIn, Color c){
-        int y = MainMS.YCANVASBOUND-yIn;
-        if ((x>0&y>0)&(x<MainMS.XBOUND&y<MainMS.YCANVASBOUND)){
+        int y = MainMS.YBOUND-yIn;
+        if ((x>0&y>0)&(x<MainMS.XBOUND&y<MainMS.YBOUND)){
             canvas.setRGB(x,y,c.getRGB());
         }
     }

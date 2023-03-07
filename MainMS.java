@@ -1,3 +1,6 @@
+//x: 0-775
+//y: 0-750
+
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -11,8 +14,6 @@ public class MainMS {
     
     final static int XBOUND = 775;
     final static int YBOUND = 750;
-
-    final static int YCANVASBOUND = YBOUND-375;
     
     
     final static double TIME = 10;
@@ -26,18 +27,19 @@ public class MainMS {
 
         JFrame appFrame = new JFrame("Molecule Simulator");
 
-        PanelMS panel = new PanelMS(XBOUND, YBOUND);
+        PanelMS thisPanel = new PanelMS(XBOUND, YBOUND);
 
-        appFrame.add(panel);
+        appFrame.add(thisPanel);
         appFrame.pack();
         appFrame.setVisible(true);
         appFrame.setResizable(false);
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        thisPanel.drawLine(Color.RED, 382,375,100,100);
 
-        //panel.drawRect(Color.RED, 0, 0, XBOUND/2, YBOUND/2);
-        panel.drawCircle(Color.RED, 0,100,30);
 
+        AtomMS testAtom = new AtomMS(100,100,8, Color.BLUE);
+        testAtom.refreshOn(thisPanel);
 
         
 
