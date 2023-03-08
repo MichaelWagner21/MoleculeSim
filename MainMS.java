@@ -35,7 +35,10 @@ public class MainMS {
         appFrame.setResizable(false);
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        thisPanel.drawLine(Color.RED, 382,375,100,100);
+        thisPanel.drawLine(Color.RED, 100,100,100,500);
+        
+
+        
 
 
         AtomMS testAtom = new AtomMS(100,100,8, Color.BLUE);

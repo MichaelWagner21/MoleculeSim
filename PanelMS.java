@@ -52,11 +52,24 @@ public class PanelMS extends JPanel {
 
         double m = ((double)(y2-y1)/(double)(x2-x1));
 
-        System.out.print(m);
-
+        int y = y1;
+        int xIt = x1;
         setPixel(x1,y1,c);
+        setPixel(x2,y2,c);
 
-        
+            if (Math.abs(m)>1){
+                for (int yIt = y1; (minX<=xIt&xIt<=maxX)&(minY<=yIt&yIt<=maxY); yIt+=Math.signum(y2-y1)){
+                    xIt = (int)(((yIt-y1)/m)+x1);
+                    setPixel(xIt,yIt,c);
+                }
+            }
+            else{
+                for (int x = x1; (minX<=x&x<=maxX)&(minY<=y&y<=maxY); x+=Math.signum(x2-x1)){
+                    y= (int)(m*(x-x1)+y1);
+                    setPixel(x,y,c);
+                }
+            }
+            
         
     
 
