@@ -1,12 +1,12 @@
 //x: 0-775
 //y: 0-750
 
+import java.awt.Color;
 import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import java.awt.Color;
 
 
 public class MainMS {
@@ -16,7 +16,7 @@ public class MainMS {
     final static int YBOUND = 750;
     
     
-    final static double TIME = 10;
+    final static int TIME = 10;
 
     public static PanelMS thisPanel = new PanelMS(XBOUND, YBOUND);
 
@@ -40,7 +40,14 @@ public class MainMS {
         
 
         MoleculeMS water1 = new MoleculeMS(100, 100);
-        water1.updateMolecule();
+        
+        while (true){
+            water1.updateMolecule();
+            wait(TIME);
+            thisPanel.fillCanvas(Color.BLACK);
+
+        }
+        
 
 
         

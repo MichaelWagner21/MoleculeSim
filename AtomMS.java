@@ -5,6 +5,10 @@ public class AtomMS {
     int atomYPos;
     int atomRadius;
     Color atomColor;
+
+    double atomXForce;
+    double atomYForce;
+
     public AtomMS(int x, int y, int radius, Color c){
         atomXPos = x;
         atomYPos = y;

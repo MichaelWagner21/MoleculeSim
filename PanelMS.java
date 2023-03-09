@@ -9,13 +9,13 @@ public class PanelMS extends JPanel {
 
     private BufferedImage canvas;
 
-    private int width;
-    private int height;
+    //private int width;
+    //private int height;
 
     public PanelMS(int w, int h) {
         canvas = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-        width = w;
-        height = h;
+        //width = w;
+        //height = h;
         fillCanvas(Color.BLACK);
         
     }
