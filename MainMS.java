@@ -18,6 +18,9 @@ public class MainMS {
     
     final static double TIME = 10;
 
+    public static PanelMS thisPanel = new PanelMS(XBOUND, YBOUND);
+
+
 
     
     public static void main(String[] args){
@@ -27,7 +30,6 @@ public class MainMS {
 
         JFrame appFrame = new JFrame("Molecule Simulator");
 
-        PanelMS thisPanel = new PanelMS(XBOUND, YBOUND);
 
         appFrame.add(thisPanel);
         appFrame.pack();
@@ -35,14 +37,11 @@ public class MainMS {
         appFrame.setResizable(false);
         appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        thisPanel.drawLine(Color.RED, 100,100,100,500);
         
 
-        
+        MoleculeMS water1 = new MoleculeMS(100, 100);
+        water1.updateMolecule();
 
-
-        AtomMS testAtom = new AtomMS(100,100,8, Color.BLUE);
-        testAtom.refreshOn(thisPanel);
 
         
 

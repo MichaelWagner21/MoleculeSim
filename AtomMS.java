@@ -11,7 +11,13 @@ public class AtomMS {
         atomRadius = radius;
         atomColor = c;
     }
-    public void refreshOn(PanelMS panel){
+
+    public AtomMS(int radius, Color c){
+        atomRadius = radius;
+        atomColor = c;
+    }
+
+    public void drawOn(PanelMS panel){
         panel.drawCircle(atomColor, atomXPos, atomYPos, atomRadius);
     }
 }
