@@ -6,7 +6,7 @@ public class MoleculeMS {
 
     private double moleculeMass = 100;
 
-    private double moleculeRotation = 0;
+    private double moleculeRotationDisplacement = 0;
 
     private double molXForce = 0;
     private double molYForce = 0;
@@ -30,8 +30,6 @@ public class MoleculeMS {
 
 
     public MoleculeMS(int x, int y){
-        //Delete Below
-        oxygen.atomXForce = 3;
         molXPos = x;
         molYPos = y;
 
@@ -41,28 +39,19 @@ public class MoleculeMS {
 
         //If on edge, bounce
         if ((oxygen.atomXPos+oxygen.atomRadius>MainMS.XBOUND)){
-            oxygen.atomXForce =    -1*Math.abs(molXForce);
         }
         if(hydrogen1.atomXPos+hydrogen1.atomRadius>MainMS.XBOUND){
-            hydrogen1.atomXForce = -1*Math.abs(molXForce);
         }
         if (hydrogen2.atomXPos+hydrogen2.atomRadius>MainMS.XBOUND){
-            hydrogen2.atomXForce = -1*Math.abs(molXForce);
         }
 
         if ((oxygen.atomXPos+oxygen.atomRadius<0)){
-            oxygen.atomXForce =    Math.abs(molXForce);
         }
         if(hydrogen1.atomXPos+hydrogen1.atomRadius<0){
-            hydrogen1.atomXForce = Math.abs(molXForce);
         }
         if (hydrogen2.atomXPos+hydrogen2.atomRadius<0){
-            hydrogen2.atomXForce = Math.abs(molXForce);
         }
 
-        //Sum of atom forces
-        molXForce = oxygen.atomXForce+hydrogen1.atomXForce+hydrogen2.atomXForce;
-        molYForce = oxygen.atomYForce+hydrogen1.atomYForce+hydrogen2.atomYForce;
 
         //Attribute Calculation
         molXAccel = molXForce/moleculeMass;
@@ -86,12 +75,12 @@ public class MoleculeMS {
         oxygen.atomYPos = molYPos;
 
         //below: Sets the hydrogen atoms a certain distance, 30 in this case, away from the center, or oxygen atom
-        hydrogen1.atomXPos = (int)Math.round(molXPos+  -1*30*Math.sin(moleculeRotation));
-        hydrogen1.atomYPos = (int)Math.round(molYPos+     30*Math.cos(moleculeRotation));
+        hydrogen1.atomXPos = (int)Math.round(molXPos+  -1*30*Math.sin(moleculeRotationDisplacement));
+        hydrogen1.atomYPos = (int)Math.round(molYPos+     30*Math.cos(moleculeRotationDisplacement));
 
         
-        hydrogen2.atomXPos = (int)Math.round(molXPos+    30*Math.cos(moleculeRotation));
-        hydrogen2.atomYPos = (int)Math.round(molYPos+    30*Math.sin(moleculeRotation));
+        hydrogen2.atomXPos = (int)Math.round(molXPos+    30*Math.cos(moleculeRotationDisplacement));
+        hydrogen2.atomYPos = (int)Math.round(molYPos+    30*Math.sin(moleculeRotationDisplacement));
 
 
         //Draws lines between atoms of the same moleclue
