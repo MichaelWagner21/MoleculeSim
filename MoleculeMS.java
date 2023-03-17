@@ -1,8 +1,8 @@
 import java.awt.Color;
 
 public class MoleculeMS {
-    int molXPos;
-    int molYPos;
+    int molCOMXPos;
+    int molCOMYPos;
 
     private double moleculeMass = 100;
 
@@ -24,14 +24,14 @@ public class MoleculeMS {
     private double molYDisplacement = 0;
 
 
-    AtomMS oxygen = new AtomMS(6,Color.RED);
-    AtomMS hydrogen1 = new AtomMS(3, Color.WHITE);
-    AtomMS hydrogen2 = new AtomMS(3, Color.WHITE);
+    AtomMS oxygen = new AtomMS((int)Math.round(14.4),Color.RED);
+    AtomMS hydrogen1 = new AtomMS((int)Math.round(15.87), Color.WHITE);
+    AtomMS hydrogen2 = new AtomMS((int)Math.round(15.87), Color.WHITE);
 
 
     public MoleculeMS(int x, int y){
-        molXPos = x;
-        molYPos = y;
+        molCOMXPos = x;
+        molCOMYPos = y;
 
     }
 
@@ -64,23 +64,23 @@ public class MoleculeMS {
         molYDisplacement = molYVelocity*MainMS.TIME;
 
 
-        molXPos+=molXDisplacement;
-        molYPos+=molYDisplacement;
+        molCOMXPos+=molXDisplacement;
+        molCOMYPos+=molYDisplacement;
 
 
 
 
-        //Below: Sets oxygen as the center of the molecule
-        oxygen.atomXPos = molXPos;
-        oxygen.atomYPos = molYPos;
+        //Below: Sets oxygen relative to center of mass
+        oxygen.atomXPos = (int)(Math.round((-1.31098)*Math.cos(moleculeRotationDisplacement)-(-1.31098)*Math.sin(moleculeRotationDisplacement))+molCOMXPos);
+        oxygen.atomYPos = (int)(Math.round((-1.31098)*Math.sin(moleculeRotationDisplacement)+(-1.31098)*Math.cos(moleculeRotationDisplacement))+molCOMYPos);
 
         //below: Sets the hydrogen atoms a certain distance, 30 in this case, away from the center, or oxygen atom
-        hydrogen1.atomXPos = (int)Math.round(molXPos+  -1*30*Math.sin(moleculeRotationDisplacement));
-        hydrogen1.atomYPos = (int)Math.round(molYPos+     30*Math.cos(moleculeRotationDisplacement));
+        hydrogen1.atomXPos = (int)(Math.round(("x")*Math.cos(moleculeRotationDisplacement)-("y")*Math.sin(moleculeRotationDisplacement))+molCOMXPos);
+        hydrogen1.atomYPos = (int)(Math.round(("x")*Math.sin(moleculeRotationDisplacement)+("y")*Math.cos(moleculeRotationDisplacement))+molCOMYPos);
 
         
-        hydrogen2.atomXPos = (int)Math.round(molXPos+    30*Math.cos(moleculeRotationDisplacement));
-        hydrogen2.atomYPos = (int)Math.round(molYPos+    30*Math.sin(moleculeRotationDisplacement));
+        hydrogen2.atomXPos = (int)(Math.round(("x")*Math.cos(moleculeRotationDisplacement)-("y")*Math.sin(moleculeRotationDisplacement))+molCOMXPos);
+        hydrogen2.atomYPos = (int)(Math.round(("x")*Math.sin(moleculeRotationDisplacement)+("y")*Math.cos(moleculeRotationDisplacement))+molCOMYPos);
 
 
         //Draws lines between atoms of the same moleclue
@@ -89,9 +89,9 @@ public class MoleculeMS {
 
 
         //Draws Atoms
-        oxygen.drawOn(MainMS.thisPanel);
         hydrogen1.drawOn(MainMS.thisPanel);
         hydrogen2.drawOn(MainMS.thisPanel);
+        oxygen.drawOn(MainMS.thisPanel);
 
     }
 

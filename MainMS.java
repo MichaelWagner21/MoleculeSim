@@ -1,5 +1,9 @@
 //x: 0-775
 //y: 0-750
+//One angstrom unit is defined as 30 pixels.
+//O to H is 0.9 angstroms, 27 pixels
+//Bohr radius (Hydrogen Radius) is 0.529 angstroms, 15.87 pixels
+//Oxygen radius is .48 angstroms, 14.4 Pixels
 
 import java.awt.Color;
 import java.util.Random;
