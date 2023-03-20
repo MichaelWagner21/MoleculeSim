@@ -49,6 +49,7 @@ public class MainMS {
             water1.updateMolecule();
             wait(TIME);
             thisPanel.fillCanvas(Color.BLACK);
+            water1.moleculeRotationDisplacement+=0;
 
         }
         
